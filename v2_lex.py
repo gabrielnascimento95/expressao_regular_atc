@@ -52,7 +52,7 @@ def define_linguagem(tag):
     
 def sintaxe(linguagem):
     
-     tag = input("[INFO] Inserir uma nova tag, utilize a sintaxe.Nome_tag: \n")
+      tag = input("[INFO] Inserir uma nova tag, utilize a sintaxe.Nome_tag: \n")
       l = linguagem
       if(tag==':..'):
           main(l)
