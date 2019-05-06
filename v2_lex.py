@@ -52,12 +52,7 @@ def define_linguagem(tag):
     
 def sintaxe(linguagem):
     
-      print("******HELP********")
-      print("Para criar uma nova tag, obedecer a sintaxe. NOME_TAG:")
-      print("Para voltar ao menu anterior, digitar :..")
-      print("Para voltar ao menu anterior, digitar :..")
-
-      tag = input("[INFO] Inserir uma nova tag, utilize a sintaxe.Nome_tag: \n")
+     tag = input("[INFO] Inserir uma nova tag, utilize a sintaxe.Nome_tag: \n")
       l = linguagem
       if(tag==':..'):
           main(l)
@@ -93,9 +88,9 @@ def main(linguagem):
       if(menu==':n'):
           sintaxe(linguagem)
       elif(menu==':l'):
-          file=input("Digite o nome do arquivo: ")
-          input("\nAperte qualquer tecla para continuar...")
-          decisao=input("\nDeseja realmente carregar o arquivo? S ou N")
+          file=input("[INFO] Digite o nome do arquivo: ")
+          input("\n[INFO] Aperte qualquer tecla para continuar...")
+          decisao=input("\n[WARNING] Deseja realmente carregar o arquivo? S ou N")
           vetor_aux=[]
           if(decisao in ['S','s']):
 
@@ -112,7 +107,7 @@ def main(linguagem):
                       a = define_linguagem(vetor_aux[i])
                       if(a==False):
                           text_files = open(file + "Log", "a+")
-                          text_files.write("Linha " +str(i+1) + " : " + str(vetor_aux[i]) +"\t->[WARNING] Nao eh regular\n")
+                          text_files.write("[WARNING] Linha " +str(i+1) + " : " + str(vetor_aux[i]) +"\t-> Nao eh regular\n")
                           print(str(vetor_aux[i]) +"\t->[WARNING] Nao eh regular")
                           text_files.close()
 
@@ -121,7 +116,7 @@ def main(linguagem):
                           print("[INFO] Linguagem Regular")
                           
                           
-              input("\nAperte qualquer tecla para continuar...")
+              input("\n[INFO] Aperte qualquer tecla para continuar...")
 
               main(linguagem)    
 
@@ -130,20 +125,20 @@ def main(linguagem):
 
       elif(menu==':i'):
           print(linguagem.imprime())
-          input("Aperte qualquer letra para continuar...")
+          input("[INFO] Aperte qualquer letra para continuar...")
           main(linguagem)
       elif(menu==':s'):
-          file=input("Digite o nome do arquivo: ")
+          file=input("[INFO] Digite o nome do arquivo: ")
 
-          input("\nAperte qualquer tecla para continuar...")
+          input("\n[INFO] Aperte qualquer tecla para continuar...")
 
-          decisao=input("\nDeseja realmente salvar no arquivo? S ou N")
+          decisao=input("\n[WARNING] Deseja realmente salvar no arquivo? S ou N")
           if(decisao in ['S','s']):
               text_file = open(file, "w")
               for i in range (linguagem.tamanho()):
                   text_file.write(str(linguagem.dados[i]) +"\n")
-              print("Arquivo salvo com sucesso..")
-              input("\nAperte qualquer letra para continuar...")
+              print("[INFO] Arquivo salvo com sucesso..")
+              input("\n[INFO] Aperte qualquer letra para continuar...")
 
               main(linguagem)    
 
