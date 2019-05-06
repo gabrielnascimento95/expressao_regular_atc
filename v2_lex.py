@@ -57,29 +57,29 @@ def sintaxe(linguagem):
       print("Para voltar ao menu anterior, digitar :..")
       print("Para voltar ao menu anterior, digitar :..")
 
-      tag = input("Inserir uma nova tag, utilize a sintaxe.Nome_tag: \n")
+      tag = input("[INFO] Inserir uma nova tag, utilize a sintaxe.Nome_tag: \n")
       l = linguagem
       if(tag==':..'):
           main(l)
       elif(tag==':q'):
            exit()
       elif(tag[0] == ':'):
-          print("Valor de Tag inválido, favor inserir uma nova tag")
+          print("[ERROR] Valor de Tag inválido, favor inserir uma nova tag")
           sintaxe(linguagem)
       elif(tag.find(":") == -1):
-          print("Não apresenta dois pontos, sintaxe inválida para tag, favor digitar novamente")
+          print("[ERROR] Não apresenta dois pontos, sintaxe inválida para tag, favor digitar novamente")
           sintaxe(linguagem)
       else:
           regular= define_linguagem(tag)
           if(regular):
-              print("Linguagem  regular!")
+              print("[INFO] Linguagem  regular!")
               l.save(tag)
-              print("Salvando em nosso Buffer...")
+              print("[INFO] Salvando em nosso Buffer...")
               time.sleep(3)
               os.system('cls' if os.name == 'nt' else 'clear')
               sintaxe(linguagem)
           else:
-              print("Linguagem não regular! \nPreparando o ambiente para uma nova entrada de dados")
+              print("[WARNING] Linguagem não regular! \nPreparando o ambiente para uma nova entrada de dados")
               time.sleep(3)
               os.system('cls' if os.name == 'nt' else 'clear')
               sintaxe(linguagem)
@@ -87,13 +87,7 @@ def sintaxe(linguagem):
       
 def main(linguagem):
       os.system('cls' if os.name == 'nt' else 'clear')
-      print("\n\n \t \tMENU\n")  
-      print("(:n) - Criar uma nova sintaxe") 
-      print("(:l) - Carregar conteudo externo do arquivo")
-      print("(:i) - Verificar conteudo buffer")
-      print("(:s) - Salvar conteudo em arquivo externo")
-      print("(:q) - Sair do sistema")
-      menu = input(" Escolha a opcao ")
+      menu = input(">")
     
     
       if(menu==':n'):
@@ -110,21 +104,21 @@ def main(linguagem):
                     currentPlace = line[:-1]
             
                     vetor_aux.append(currentPlace)
-              print("Arquivo lido com sucesso..")
-              print("Verificando erros..")
+              print("[INFO] Arquivo lido com sucesso..")
+              print("[INFO] Verificando erros..")
               time.sleep(3)
               
               for i in range(len(vetor_aux)):
                       a = define_linguagem(vetor_aux[i])
                       if(a==False):
                           text_files = open(file + "Log", "a+")
-                          text_files.write("Linha " +str(i+1) + " : " + str(vetor_aux[i]) +"\t->Nao eh regular\n")
-                          print(str(vetor_aux[i]) +"\t->Nao eh regular")
+                          text_files.write("Linha " +str(i+1) + " : " + str(vetor_aux[i]) +"\t->[WARNING] Nao eh regular\n")
+                          print(str(vetor_aux[i]) +"\t->[WARNING] Nao eh regular")
                           text_files.close()
 
                       else:
                           linguagem.save(vetor_aux[i])
-                          print("Linguagem Regular")
+                          print("[INFO] Linguagem Regular")
                           
                           
               input("\nAperte qualquer tecla para continuar...")
@@ -158,13 +152,13 @@ def main(linguagem):
 
       
       elif(menu==':q'):
-          ipt = input("O programa sera finalizado, deseja realmente sair?(S) or (N) ")
+          ipt = input("[WARNING] O programa sera finalizado, deseja realmente sair?(S) or (N) ")
           if(ipt in ('S','s')):
               exit()
           else:
               main(linguagem)  
       else:
-          print("O programa será abortado, opção inválida")
+          print("[WARNING] O programa será abortado, opção inválida")
           exit()
 
   
