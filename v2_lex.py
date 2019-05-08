@@ -50,9 +50,8 @@ def define_linguagem(tag):
     else:
         return True
     
-def sintaxe(linguagem):
+def sintaxe(linguagem,tag):
     
-      tag = input("[INFO] Inserir uma nova tag, utilize a sintaxe.Nome_tag: \n")
       l = linguagem
       if(tag==':..'):
           main(l)
@@ -60,10 +59,10 @@ def sintaxe(linguagem):
            exit()
       elif(tag[0] == ':'):
           print("[ERROR] Valor de Tag inválido, favor inserir uma nova tag")
-          sintaxe(linguagem)
+          main(linguagem)
       elif(tag.find(":") == -1):
           print("[ERROR] Não apresenta dois pontos, sintaxe inválida para tag, favor digitar novamente")
-          sintaxe(linguagem)
+          main(linguagem)
       else:
           regular= define_linguagem(tag)
           if(regular):
@@ -71,22 +70,23 @@ def sintaxe(linguagem):
               l.save(tag)
               print("[INFO] Salvando em nosso Buffer...")
               time.sleep(3)
-              os.system('cls' if os.name == 'nt' else 'clear')
-              sintaxe(linguagem)
+          #    os.system('cls' if os.name == 'nt' else 'clear')
+              main(linguagem)
           else:
               print("[WARNING] Linguagem não regular! \nPreparando o ambiente para uma nova entrada de dados")
               time.sleep(3)
-              os.system('cls' if os.name == 'nt' else 'clear')
-              sintaxe(linguagem)
+          #    os.system('cls' if os.name == 'nt' else 'clear')
+              main(linguagem)
                
       
 def main(linguagem):
       os.system('cls' if os.name == 'nt' else 'clear')
       menu = input(">")
     
-    
-      if(menu==':n'):
-          sintaxe(linguagem)
+        
+      if(len(menu.split(':')) !=1):
+          sintaxe(linguagem,menu)
+
       elif(menu==':l'):
           file=input("[INFO] Digite o nome do arquivo: ")
           input("\n[INFO] Aperte qualquer tecla para continuar...")
