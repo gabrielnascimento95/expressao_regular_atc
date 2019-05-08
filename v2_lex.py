@@ -81,9 +81,7 @@ def sintaxe(linguagem,tag):
       
 def main(linguagem):
       os.system('cls' if os.name == 'nt' else 'clear')
-      menu = input(">")
-    
-        
+      menu = input("")
       if(len(menu.split(':')) !=1):
           sintaxe(linguagem,menu)
 
